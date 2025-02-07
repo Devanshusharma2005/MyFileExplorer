@@ -1,6 +1,3 @@
-
-
-
 window.addEventListener('load', async () => {
     try {
         await Neutralino.init();
@@ -525,7 +522,12 @@ const app = {
             await Neutralino.clipboard.writeText(text);
             this.log('Text copied to clipboard', 'success');
         } catch (error) {
-            this.log('Error copying to clipboard: ' + error.message, 'error');
+            await Neutralino.os.showNotification(
+                'Permission Error', 
+                'Clipboard access is not enabled in app configuration', 
+                'ERROR'
+            );
+            this.log('Error: Clipboard access is not enabled in app configuration. Please add clipboard permissions to neutralino.config.json', 'error');
         }
     },
 
@@ -535,7 +537,12 @@ const app = {
             document.getElementById('clipboardText').value = text;
             this.log('Text pasted from clipboard', 'success');
         } catch (error) {
-            this.log('Error pasting from clipboard: ' + error.message, 'error');
+            await Neutralino.os.showNotification(
+                'Permission Error', 
+                'Clipboard access is not enabled in app configuration', 
+                'ERROR'
+            );
+            this.log('Error: Clipboard access is not enabled in app configuration. Please add clipboard permissions to neutralino.config.json', 'error');
         }
     },
 
