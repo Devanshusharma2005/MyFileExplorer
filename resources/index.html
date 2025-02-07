@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Explorer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-json.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-folder-tree"></i> File Explorer</h2>
+            </div>
+            <nav class="nav-menu">
+                <div class="nav-item active" data-view="home">
+                    <i class="fas fa-home"></i> Home
+                </div>
+                <div class="nav-item" data-view="files">
+                    <i class="fas fa-folder"></i> Files
+                </div>
+                <div class="nav-item" data-view="system">
+                    <i class="fas fa-microchip"></i> System
+                </div>
+                <div class="nav-item" data-view="tools">
+                    <i class="fas fa-tools"></i> Tools
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Home View -->
+            <div id="homeView" class="view active">
+                <h2>System Overview</h2>
+                <div class="system-stats">
+                    <!-- Memory Usage Section -->
+                    <div class="memory-info">
+                        <h3><i class="fas fa-memory"></i> Memory Usage</h3>
+                        <div class="memory-details">
+                            <p id="memoryUsed">Used: 0 Bytes</p>
+                            <p id="memoryTotal">Total: 0 Bytes</p>
+                            <div class="progress-bar">
+                                <div id="memoryProgressBar" class="progress"></div>
+                                <span id="memoryPercentage">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Files View -->
+            <div id="filesView" class="view">
+                <div class="file-explorer-header">
+                    <h2>File Explorer</h2>
+                    <div class="file-actions">
+                        <button id="newFileBtn" class="btn"><i class="fas fa-plus"></i> New File</button>
+                        <button id="uploadBtn" class="btn"><i class="fas fa-upload"></i> Upload</button>
+                        <button id="refreshBtn" class="btn"><i class="fas fa-sync"></i> Refresh</button>
+                    </div>
+                </div>
+                <div id="fileList" class="file-list"></div>
+            </div>
+
+            <!-- System View -->
+            <div id="systemView" class="view">
+                <h2>System Information</h2>
+                <div id="osInfo" class="info-section"></div>
+                <div id="hwInfo" class="info-section"></div>
+                <div id="networkInfo" class="info-section"></div>
+            </div>
+
+            <!-- Tools View -->
+            <div id="toolsView" class="view">
+                <h2>Tools</h2>
+                <div class="tools-section">
+                    <div class="clipboard-tool">
+                        <h3>Clipboard</h3>
+                        <textarea id="clipboardText" placeholder="Enter text to copy/paste"></textarea>
+                        <div class="tool-actions">
+                            <button id="copyBtn" class="btn"><i class="fas fa-copy"></i> Copy</button>
+                            <button id="pasteBtn" class="btn"><i class="fas fa-paste"></i> Paste</button>
+                        </div>
+                    </div>
+                    <div class="command-tool">
+                        <h3>Command Executor</h3>
+                        <input type="text" id="commandInput" placeholder="Enter command">
+                        <button id="runCommand" class="btn"><i class="fas fa-terminal"></i> Run</button>
+                        <pre id="commandOutput"></pre>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Console Output -->
+        <footer class="console">
+            <div class="console-header">
+                <h3>Console</h3>
+                <button id="clearConsole" class="btn"><i class="fas fa-trash"></i> Clear</button>
+            </div>
+            <pre id="output" class="console-output"></pre>
+        </footer>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle"></h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div id="modalBody" class="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="js/neutralino.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

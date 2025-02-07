@@ -1,0 +1,99 @@
+{
+  "$schema": "https://raw.githubusercontent.com/neutralinojs/neutralinojs/main/schemas/neutralino.config.schema.json",
+  "applicationId": "com.example.fileexplorer",
+  "version": "1.0.0",
+  "defaultMode": "window",
+  "port": 0,
+  "documentRoot": "/resources/",
+  "url": "/",
+  "enableServer": true,
+  "enableNativeAPI": true,
+  "tokenSecurity": "one-time",
+  "logging": {
+    "enabled": true,
+    "writeToFile": true,
+    "appLogsPath": "${NL_PATH}/logs/app.log",
+    "errorLogsPath": "${NL_PATH}/logs/error.log"
+  },
+  "nativeAllowList": [
+    "app.*",
+    "os.*",
+    "filesystem.*",
+    "window.*",
+    "computer.*"
+  ],
+  "modes": {
+    "window": {
+      "title": "File Explorer",
+      "width": 1200,
+      "height": 800,
+      "minWidth": 800,
+      "minHeight": 600,
+      "icon": "/resources/icons/appIcon.png",
+      "enableInspector": false
+    },
+    "browser": {
+      "globalVariables": {
+        "TEST": "Test value browser"
+      },
+      "nativeBlockList": [
+        "filesystem.*"
+      ]
+    },
+    "cloud": {
+      "url": "/resources/#cloud",
+      "nativeAllowList": [
+        "app.*"
+      ]
+    },
+    "chrome": {
+      "width": 800,
+      "height": 500,
+      "args": "--user-agent=\"Neutralinojs chrome mode\"",
+      "nativeBlockList": [
+        "filesystem.*",
+        "os.*"
+      ]
+    }
+  },
+  "cli": {
+    "binaryName": "fileexplorer",
+    "resourcesPath": "/resources/",
+    "extensionsPath": "/extensions/",
+    "clientLibrary": "/resources/js/neutralino.js",
+    "binaryVersion": "4.9.0",
+    "clientVersion": "3.8.0"
+  },
+  "extensions": [],
+  "buildScript": {
+    "mac": {
+      "icon": "./resources/icons/appIcon.icns"
+    },
+    "windows": {
+      "icon": "./resources/icons/appIcon.ico",
+      "webviewDetails": {
+        "minWidth": 800,
+        "minHeight": 600,
+        "width": 1200,
+        "height": 800,
+        "icon": "./resources/icons/appIcon.ico"
+      }
+    },
+    "linux": {
+      "icon": "./resources/icons/appIcon.png"
+    }
+  },
+  "globalVariables": {
+    "TEST": "Test value",
+    "APP_NAME": "Advanced File Explorer",
+    "APP_VERSION": "1.0.0",
+    "CONFIG": {
+      "maxFileSize": 10485760,
+      "allowedFileTypes": ["*"],
+      "defaultPath": "documents",
+      "enableNotifications": true,
+      "enableConfirmations": true,
+      "theme": "dark"
+    }
+  }
+}

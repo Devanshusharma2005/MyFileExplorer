@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NeutralinoJS Demo App</title>
+    <link rel="stylesheet" href="resources/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>NeutralinoJS Demo App</h1>
+        </header>
+
+        <div class="control-panel">
+            <button onclick="app.showAlert()">Show Alert</button>
+            <button onclick="app.handleFileOperations()">File Operations</button>
+            <button onclick="app.openFileDialog()">Open File Dialog</button>
+            <button onclick="app.getSystemInfo()">System Info</button>
+            <button onclick="app.handleClipboard()">Clipboard Test</button>
+            <button onclick="app.openBrowser()">Open URL</button>
+        </div>
+
+        <div class="console-output">
+            <div id="output"></div>
+        </div>
+    </div>
+
+    <!-- Add this line to include the Neutralino client library -->
+    <script src="resources/js/neutralino.js"></script>
+    <!-- Make sure main.js comes after neutralino.js -->
+    <script src="js/main.js"></script>
+</body>
+</html> 
